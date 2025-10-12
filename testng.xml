@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SeleniumTest" parallel="false">
+    <test name="AddVessel">
+        <classes>
+            <class name="fleetManagement.AddVessel"></class>
+        </classes>
+    </test>
+</suite>

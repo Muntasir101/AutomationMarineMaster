@@ -13,22 +13,25 @@ import java.time.Duration;
 
 public class CargoBooking {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         WebDriver driver = new FirefoxDriver();
         driver.get("https://takhangithub.github.io/MavenXpress/");
         driver.manage().window().maximize();
 
-        WebElement CargoOpration = driver.findElement(By.cssSelector("div[data-section='cargo'] span"));
-        CargoOpration.click();
+        // Apply Implicit wait: Wait for Dom to load
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        WebElement CargoOperation = driver.findElement(By.cssSelector("div[data-section='cargo'] span"));
+        CargoOperation.click();
 
         //Booking
         WebElement cargoBooking = driver.findElement(By.cssSelector("div[data-tab='booking']"));
         cargoBooking.click();
 
         WebElement cargoType = driver.findElement(By.cssSelector("#cargo-type"));
-        Select selctCarTyp = new Select(cargoType);
-        selctCarTyp.selectByValue("Bulk");
+        Select selectCarTyp = new Select(cargoType);
+        selectCarTyp.selectByValue("Bulk");
 
         WebElement Weight = driver.findElement(By.cssSelector("#weight"));
         Weight.sendKeys("5200");

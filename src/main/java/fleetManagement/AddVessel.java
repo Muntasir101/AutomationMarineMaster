@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.time.Duration;
 
 
 public class AddVessel {
@@ -12,13 +16,16 @@ public class AddVessel {
         WebDriver driver = new FirefoxDriver();
         driver.get("https://muntasir101.github.io/marineXpress/");
 
-        WebElement FleetManagementMenu = driver.findElement(By.cssSelector("div[data-section='fleet'] span"));
+        // Setup Explicit wait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement FleetManagementMenu = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#add-vessel-btn")));
         FleetManagementMenu.click();
 
         WebElement AddVesselButton = driver.findElement(By.cssSelector("#add-vessel-btn"));
         AddVesselButton.click();
 
-        WebElement VesselName = driver.findElement(By.cssSelector("#vessel-name"));
+        WebElement VesselName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#vessel-name")));
         VesselName.sendKeys("Sea Super");
 
         WebElement VesselType = driver.findElement(By.cssSelector("#vessel-type"));
@@ -30,7 +37,6 @@ public class AddVessel {
 
         WebElement Capacity = driver.findElement(By.cssSelector("#capacity"));
         Capacity.sendKeys("20000");
-
 
     }
 }

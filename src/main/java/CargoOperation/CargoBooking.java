@@ -53,8 +53,6 @@ public class CargoBooking {
         Select selectCargo = new Select(SelectCargoList);
         selectCargo.selectByIndex(1);
 
-
-
         WebElement selctVsl = driver.findElement(By.cssSelector(" #vessel-select"));
         Select selCargVsl = new Select(selctVsl);
         selCargVsl.selectByIndex(1);

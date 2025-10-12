@@ -1,6 +1,7 @@
 /*
 1. Explicit wait
 2. Separate Locators
+3. Implement data constants
  */
 
 package fleetManagement;
@@ -11,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.time.Duration;
 
 
@@ -24,6 +24,7 @@ public class AddVessel {
     private static final By Vessel_Type = By.cssSelector("#vessel-type");
     private static final By Year_Build = By.cssSelector("#year-built");
     private static final By Vessel_Capacity = By.cssSelector("#capacity");
+    private static final By Vessel_register_Button = By.cssSelector("form[id='vessel-form'] button[type='submit']");
 
     // Vessel data constants
     private static final String data_Vessel_Name = "Sea Monster";
@@ -56,6 +57,9 @@ public class AddVessel {
 
         WebElement Capacity = driver.findElement(Vessel_Capacity);
         Capacity.sendKeys(data_Vessel_Capacity);
+
+        WebElement VesselRegisterButton = driver.findElement(Vessel_register_Button);
+        VesselRegisterButton.click();
 
         driver.quit();
 

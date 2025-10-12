@@ -17,13 +17,19 @@ import java.time.Duration;
 
 public class AddVessel {
 
-    // Locators
+    // Page Object Locators
     private static final By Fleet_Management_Menu = By.cssSelector("div[data-section='fleet'] span");
     private static final By Add_Vessel_Button = By.cssSelector("#add-vessel-btn");
     private static final By Vessel_Name = By.cssSelector("#vessel-name");
     private static final By Vessel_Type = By.cssSelector("#vessel-type");
     private static final By Year_Build = By.cssSelector("#year-built");
     private static final By Vessel_Capacity = By.cssSelector("#capacity");
+
+    // Vessel data constants
+    private static final String data_Vessel_Name = "Sea Monster";
+    private static final String data_Vessel_Type = "Tanker";
+    private static final String data_Vessel_Year = "2020";
+    private static final String data_Vessel_Capacity = "50000";
 
     public static void main(String[] args) {
         WebDriver driver = new FirefoxDriver();
@@ -39,17 +45,17 @@ public class AddVessel {
         AddVesselButton.click();
 
         WebElement VesselName = wait.until(ExpectedConditions.visibilityOfElementLocated(Vessel_Name));
-        VesselName.sendKeys("Sea Super");
+        VesselName.sendKeys(data_Vessel_Name);
 
         WebElement VesselType = driver.findElement(Vessel_Type);
         Select select = new Select(VesselType);
-        select.selectByValue("Tanker");
+        select.selectByValue(data_Vessel_Type);
 
         WebElement YearBuild = driver.findElement(Year_Build);
-        YearBuild.sendKeys("2020");
+        YearBuild.sendKeys(data_Vessel_Year);
 
         WebElement Capacity = driver.findElement(Vessel_Capacity);
-        Capacity.sendKeys("20000");
+        Capacity.sendKeys(data_Vessel_Capacity);
 
         driver.quit();
 

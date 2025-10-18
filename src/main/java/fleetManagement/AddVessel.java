@@ -29,21 +29,13 @@ public class AddVessel {
     private static final By Vessel_register_Button = By.cssSelector("form[id='vessel-form'] button[type='submit']");
     private static final By Vessel_add_success_message =  By.cssSelector("#toast-message");
 
-    // Vessel data constants
-    private static final String data_Vessel_Name = "Sea Monster";
-    private static final String data_Vessel_Type = "Tanker";
-    private static final String data_Vessel_Year = "2020";
-    private static final String data_Vessel_Flag = "USA";
-    private static final String data_Current_Location = "USA";
-    private static final String data_Vessel_Capacity = "50000";
 
     public static void main(String[] args) {
 
-        DriverManager.initDriver();
+        DriverManager.initDriver("firefox");
         driver = DriverManager.getDriver();
         wait = DriverManager.getWait();
         DriverManager.navigateURL("https://muntasir101.github.io/marineXpress/");
-        System.out.println("Navigate to URL");
         openFleetManagementMenu();
         clickAddVesselButton();
         fillVesselForm();
@@ -64,23 +56,23 @@ public class AddVessel {
     }
     public static void fillVesselForm(){
         WebElement VesselName = wait.until(ExpectedConditions.visibilityOfElementLocated(Vessel_Name));
-        VesselName.sendKeys(data_Vessel_Name);
+        VesselName.sendKeys(VesselData.data_Vessel_Name);
 
         WebElement VesselType = driver.findElement(Vessel_Type);
         Select select = new Select(VesselType);
-        select.selectByValue(data_Vessel_Type);
+        select.selectByValue(VesselData.data_Vessel_Type);
 
         WebElement YearBuild = driver.findElement(Year_Build);
-        YearBuild.sendKeys(data_Vessel_Year);
+        YearBuild.sendKeys(VesselData.data_Vessel_Year);
 
         WebElement VesselFlag = driver.findElement(Vessel_Flag);
-        VesselFlag.sendKeys(data_Vessel_Flag);
+        VesselFlag.sendKeys(VesselData.data_Vessel_Flag);
 
         WebElement VesselCurrentLocation = driver.findElement(Vessel_CurrentLocation);
-        VesselCurrentLocation.sendKeys(data_Current_Location);
+        VesselCurrentLocation.sendKeys(VesselData.data_Current_Location);
 
         WebElement Capacity = driver.findElement(Vessel_Capacity);
-        Capacity.sendKeys(data_Vessel_Capacity);
+        Capacity.sendKeys(VesselData.data_Vessel_Capacity);
         System.out.println("Inputted Vessel Form data.");
     }
     public static void submitVesselForm(){
